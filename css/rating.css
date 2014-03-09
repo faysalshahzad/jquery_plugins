@@ -1,0 +1,20 @@
+  span.rating {
+    background: url("stars-yellow.png") top left;
+    /* background: url("stars-blue.png") top left; */
+    display: inline-block;
+    height: 21px;
+    width: 115px;
+    overflow: hidden;
+    text-indent: -9999px;
+   }
+  span.r0 {background-position: -115px 0;}
+  span.r05{background-position: -115px 21px;}
+  span.r1 {background-position: -92px 0;}
+  span.r15{background-position: -92px 21px;}
+  span.r2 {background-position: -69px 0;}
+  span.r25{background-position: -69px 21px;}
+  span.r3 {background-position: -46px 0;}
+  span.r35{background-position: -46px 21px;}
+  span.r4 {background-position: -23px 0;}
+  span.r45{background-position: -23px 21px;}
+  span.r5 {background-position: 0 0;}

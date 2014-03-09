@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>index</title>
+		<meta name="author" content="Faysal Shahzad" />
+		<!-- Date: 2013-09-26 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<style type="text/css">
+			body {
+				background-color: blue;
+				color: black;
+			}	
+			
+			span#rating {
+				    background-image: url("../img/sternchen-sprite.png");
+				    display: inline-block;
+				    height: 21px;
+				    width: 100px;
+				    overflow: hidden;
+				    text-indent: -9999px;
+		   }
+	   
+	   	   span.r0 {background-position: -100px 0;}
+		   span.r05{background-position: -80px -20px;}
+		   span.r1 {background-position: -80px 0;}
+		   span.r15{background-position: -60px -20px;}
+		   span.r2 {background-position: -60px 0;}
+		   span.r25{background-position: -40px -20px;}
+		   span.r3 {background-position: -40px 0;}
+		   span.r35{background-position: -20px -20px;}
+		   span.r4 {background-position: -20px 0;}
+		   span.r45{background-position: 0 -20px;}
+		   span.r5 {background-position: 0 0;}
+					
+			
+		</style>
+		
+	</head>
+	<body>
+		<h1>This is the heading of the page</h1>
+		<div id="box">
+			This is inside div
+			<div>
+				<ul>
+				<!--	<span class="rating r0">Rating : 0.5 star out of 5</span><br>
+					<span class="rating r05">Rating : 0.5 star out of 5</span><br>
+ 					<span class="rating r1">Rating : 1 star out of 5</span><br>
+ 					<span class="rating r15">Rating : 4.5 stars out of 5</span><br> -->
+ 					<span id="rating" class="r2">Rating : 4.5 stars out of 5</span><br>
+ 			<!--		<span class="rating r25">Rating : 4.5 stars out of 5</span><br>
+ 					<span class="rating r3">Rating : 4.5 stars out of 5</span><br>
+ 					<span class="rating r35">Rating : 3 stars out of 5</span><br>
+ 					<span class="rating r4">Rating : 3 stars out of 5</span><br>
+ 					<span class="rating r45">Rating : 3 stars out of 5</span><br>
+ 					<span class="rating r5">Rating : 3 stars out of 5</span> --> 
+				</ul>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#box").css("background-color", "white");
+				
+				$("span#rating").bind("mousemove", function(e) {
+            		var x = (e.pageX-this.offsetLeft);
+            	//	x = Math.ceil(x/20);
+            		var newPosX = x-100;
+            		//alert(newPosX);
+            		$(this).css("background-position",newPosX+'px '+'-40px');
+            		// $(this).attr("class","r"+(x+0));
+                	
+               });
+
+	            $("span#rating").bind("mouseout", function() {
+					//alert("out");
+        	        $(this).removeClass();
+
+            	});
+
+	            $("span#rating").bind("click", function(e) {
+					var x = (e.pageX-this.offsetLeft);
+            		x = Math.ceil(x/20);
+            		alert("star number "+x);
+            	});
+            	
+            	
+			});		
+		</script>
+	</body>
+</html>
+
