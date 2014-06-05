@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>index</title>
+		<meta name="author" content="Faysal Shahzad" />
+		<!-- Date: 2013-09-26 -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		 <link rel="stylesheet" href="../css/rating.css" />
+	</head>
+	<body>
+		<h1>This is the heading of the plugin</h1>
+		<div id="box">
+			Please evaluate our product:
+			<span id="rating" class="r2">Rating : 4.5 stars out of 5</span><br>
+ 		</div>
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+								
+				$("span#rating").bind("mousemove", function(e) {
+            		var x = (e.pageX-this.offsetLeft);
+            		 // x = Math.ceil(x/20);
+            		var newPosX = Math.ceil((x/20))*20;
+            		 newPosX-=100;
+            		$(this).css("background-position",newPosX+'px '+'80px');
+            		// $(this).attr("class","r"+(x+0));
+                	
+               });
+
+	            $("span#rating").bind("mouseout", function() {
+					//alert("out");
+        	        $(this).removeClass();
+
+            	});
+
+	            $("span#rating").bind("click", function(e) {
+					var x = (e.pageX-this.offsetLeft);
+            		x = Math.ceil(x/20);
+            		// alert("star number "+x);
+            	});
+            	
+            	
+			});		
+		</script>
+	</body>
+</html>
+
