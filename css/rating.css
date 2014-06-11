@@ -3,14 +3,16 @@ body {
 	color: black;
 }	
 	
-div#box {
+div#box1,
+div#box2 {
 	background-color: white;
 	width: 200px;
 	height: 50px;
-	padding: 20px; 	
+	padding: 20px;
+	margin-bottom: 20px; 	
 } 	
 			
-span#rating {
+span.star-rating {
 	background-image: url("../img/sternchen-sprite.png");
 	display: inline-block;
 	height: 21px;

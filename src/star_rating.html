@@ -12,36 +12,34 @@
 	</head>
 	<body>
 		<h1>This is the heading of the plugin</h1>
-		<div id="box">
+		<div id="box1">
 			Please evaluate our product:
-			<span id="rating" class="r2">Rating : 4.5 stars out of 5</span><br>
+			<span class="star-rating r2" data-value"4">Rating : 4.5 stars out of 5</span><br>
+ 		</div>
+ 		
+ 		<div id="box2">
+			Please evaluate our product:
+			<span  class="star-rating r3" data-val="3">Rating : 4.5 stars out of 5</span><br>
  		</div>
 		
 		<script type="text/javascript">
 			$(document).ready(function() {
 								
-				$("span#rating").bind("mousemove", function(e) {
+				$("span.star-rating").bind("mousemove", function(e) {
             		var x = (e.pageX-this.offsetLeft);
-            		 // x = Math.ceil(x/20);
             		var newPosX = Math.ceil((x/20))*20;
             		 newPosX-=100;
             		$(this).css("background-position",newPosX+'px '+'80px');
-            		// $(this).attr("class","r"+(x+0));
-                	
                });
 
-	            $("span#rating").bind("mouseout", function() {
-					//alert("out");
-        	        $(this).removeClass();
-
+	            $("span.star-rating").bind("mouseout", function() {
+        	        $(this).removeClass('[class^="r"]');
             	});
 
-	            $("span#rating").bind("click", function(e) {
+	            $("span.star-rating").bind("click", function(e) {
 					var x = (e.pageX-this.offsetLeft);
             		x = Math.ceil(x/20);
-            		// alert("star number "+x);
             	});
-            	
             	
 			});		
 		</script>
