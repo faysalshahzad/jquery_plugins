@@ -46,7 +46,7 @@
 			});
 		});
 		
-		// returns the jQuery object to allow for chainability.
+		// returns the jQuery object to allow for chaining.
           return this;
 	};	
 	
