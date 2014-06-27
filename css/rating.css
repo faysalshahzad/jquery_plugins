@@ -12,8 +12,16 @@ div#box3 {
 	height: 50px;
 	padding: 20px;
 	margin-bottom: 20px;
-	font-size: 0.9em; 	
+	font-size: 0.9em;
+	position: relative; 	
 } 	
+	
+span.count {
+	position: absolute;
+	display: block;
+	top: 50px;
+	right: 85px;
+}	
 			
 span.star-rating {
 	background-image: url("../img/sternchen-sprite.png");

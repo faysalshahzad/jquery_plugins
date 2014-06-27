@@ -15,17 +15,18 @@
 		<h1>This is the heading of the plugin</h1>
 		<div id="box1">
 			Please evaluate our product:
-			<span class="star-rating r2" data-value"4">Rating : 4.5 stars out of 5</span><br>
- 		</div>
+			<span class="star-rating" data-id="1"></span>
+		</div>
  		
  		<div id="box2">
 			Please evaluate our product:
-			<span  class="star-rating r3" data-val="3">Rating : 4.5 stars out of 5</span><br>
- 		</div>
+			<span  class="star-rating" data-id="3"></span>
+		</div>
 		
  		<div id="box3">
 			Please evaluate our product:
-			<span  class="star-rating r35" data-val="3">Rating : 4.5 stars out of 5</span><br>
+			<span  class="star-rating" data-id="5"></span>
+			
  		</div>
 		
 		<script type="text/javascript">
@@ -35,30 +36,65 @@
 		} )	(15); */
 		
 			$(document).ready(function() {
-								
 				
+				ratingUrl = "star_rating.php";
+				fillStarRating(3);
 				
-				$("span.star-rating").bind("mousemove", function(e) {
-            		var x = (e.pageX-this.offsetLeft);
+                $("span.star-rating").bind("mousemove", function(e) {
+            		var x = (e.pageX-this.offsetLeft)-7;
             		var newPosX = Math.ceil((x/20))*20;
             		 newPosX-=100;
             		$(this).css("background-position",newPosX+'px '+'80px');
-               });
+                });
 
 	            $("span.star-rating").bind("mouseout", function() {
         	        $(this).removeClass('[class^="r"]');
             	});
 
 	            $("span.star-rating").bind("click", function(e) {
-					var x = (e.pageX-this.offsetLeft);
-            		x = Math.ceil(x/20);
+					var ratingValue = (e.pageX-this.offsetLeft);
+            		ratingValue = Math.ceil(ratingValue/20);
+                    var elemid = $(this).attr('data-id');
+                    $.ajax ({
+                        url:ratingUrl,
+                        type: "GET",
+                        data : {id:elemid, value: ratingValue},
+                        success: function(result) {
+                            alert(result);
+                            fillStarRating(elemid);
+                        },
+                        error: function() {alert("Unfortunately an error occured");},
+                        async:false,
+                        cache: false
+                    });
             	});
             	
-				$();
+			
 			});		
 
-			function fillStarRating() {
+			function fillStarRating(dataid) {
 				
+                $.ajax({
+                    url:ratingUrl,
+                    type: "GET",
+                    data : {id:dataid},
+                    success: function(result) {
+                        alert(result);
+                        var values = result.split(" ");
+                        var totalvotes = values[0];
+                        var rating = values[1];
+                            rating = rating.split('.').join("");
+                        $('span[data-id='+dataid+']').addClass("r"+rating);
+                        $("<span class='count'>("+totalvotes+")</span>").insertAfter('span[data-id='+dataid+']');
+                    },
+                    error: function() {alert("Unfortunately an error occured");},
+                    async:false,
+                    cache: false
+                });
+                
+                 return false; // for asynchrnous testing, will be executed immediately if async is true, we can also use e.preventDefault; e.stopPropagation; instead of return false;
+                // e.unbind();  
+
 			}
 		</script>
 	</body>
